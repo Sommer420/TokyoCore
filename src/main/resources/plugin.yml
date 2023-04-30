@@ -1,0 +1,19 @@
+name: TokyoCore
+version: '${project.version}'
+main: com.sommer.tokyocore.Main
+api-version: 1.19
+prefix: TokyoCore
+authors: [ Sommer, Sommer#4445 ]
+softdepend:
+  - Vault
+  - PlaceholderAPI
+commands:
+  Coins:
+    aliases: [ /Coin ]
+    description: Coins kommando
+  Gems:
+    aliases: [ /Gem ]
+    description: Gems kommando
+  Gamemode:
+    aliases: [ /gm ]
+    description: Gamemode kommando

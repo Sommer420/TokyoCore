@@ -1,0 +1,7 @@
+pay:
+  enabled: true
+  min: 250
+prefix: "§8[§5§lGEM §f§lSYSTEM§8]"
+mainFarve: "&d"
+gems:
+  baf2a43a-95db-401c-8cd0-225285d7716d: 1234567890 # Blot et eksempel. UUID'et fører til spilleren 'Sqmmer'.
