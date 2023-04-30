@@ -10,7 +10,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import static com.sommer.tokyocore.Main.mainConfigYML;
 
-public class GameModeCommand extends JavaPlugin implements CommandExecutor {
+public class GameModeCommand implements CommandExecutor {
     private final Main plugin;
 
     public GameModeCommand(Main plugin) {

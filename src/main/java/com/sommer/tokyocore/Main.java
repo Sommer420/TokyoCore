@@ -12,7 +12,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
 
-public final class Main extends JavaPlugin implements Listener {
+public final class Main extends JavaPlugin implements Listener{
     public static Config coinConfig, gemConfig, mainConfig;
     public static FileConfiguration coinConfigYML, gemConfigYML, mainConfigYML;
     public static Main instance;
@@ -34,7 +34,11 @@ public final class Main extends JavaPlugin implements Listener {
         mainConfigYML = mainConfig.getConfig();
         //new GuiManager();
         //Bukkit.getPluginManager().registerEvents(this, (Plugin) this);
-        getCommand("Gamemode").setExecutor(this);
+
+        new GameModeCommand(this);
+        new CoinCommand(this);
+        new GemCommand(this);
+
         System.out.println("Pluginet starter..");
     }
 

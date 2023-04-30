@@ -8,12 +8,12 @@ softdepend:
   - Vault
   - PlaceholderAPI
 commands:
-  Coins:
-    aliases: [ /Coin ]
+  coins:
+    aliases: [ /coin ]
     description: Coins kommando
-  Gems:
-    aliases: [ /Gem ]
+  gems:
+    aliases: [ /gem ]
     description: Gems kommando
-  Gamemode:
+  gamemode:
     aliases: [ /gm ]
     description: Gamemode kommando
