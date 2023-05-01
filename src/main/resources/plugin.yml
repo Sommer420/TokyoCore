@@ -9,11 +9,24 @@ softdepend:
   - PlaceholderAPI
 commands:
   coins:
-    aliases: [ /coin ]
+    aliases: [ coin ]
     description: Coins kommando
   gems:
-    aliases: [ /gem ]
+    aliases: [ gem ]
     description: Gems kommando
   gamemode:
-    aliases: [ /gm ]
+    aliases: [ gm ]
     description: Gamemode kommando
+  kick:
+    description: Kicker en spiller
+  gma:
+    description: Gamemode eventyr
+  gms:
+    description: Gamemode overlevelse
+  gmc:
+    description: Gamemode kreativ
+  gmsp:
+    description: Gamemode tilskuer
+  tokyocore:
+    aliases: [ tc ]
+    description: TokyoCore main command

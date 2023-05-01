@@ -1,7 +1,9 @@
 package com.sommer.tokyocore;
 
+import com.sommer.tokyocore.admin.CoreCommand;
+import com.sommer.tokyocore.admin.straf.Kick;
 import com.sommer.tokyocore.coins.CoinCommand;
-import com.sommer.tokyocore.gamemode.GameModeCommand;
+import com.sommer.tokyocore.gamemode.*;
 import com.sommer.tokyocore.gems.GemCommand;
 import com.sommer.tokyocore.utils.Config;
 import org.bukkit.Bukkit;
@@ -12,7 +14,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
 
-public final class Main extends JavaPlugin implements Listener{
+public final class Main extends JavaPlugin implements Listener {
     public static Config coinConfig, gemConfig, mainConfig;
     public static FileConfiguration coinConfigYML, gemConfigYML, mainConfigYML;
     public static Main instance;
@@ -34,14 +36,34 @@ public final class Main extends JavaPlugin implements Listener{
         mainConfigYML = mainConfig.getConfig();
         //new GuiManager();
         //Bukkit.getPluginManager().registerEvents(this, (Plugin) this);
+        getCommand("Gamemode").setExecutor(this);
+        System.out.println("Pluginet starter..");
+        new GemCommand(this);
+        new CoinCommand(this);
+        new CoreCommand(this);
+
+        new Kick(this);
 
         new GameModeCommand(this);
-        new CoinCommand(this);
-        new GemCommand(this);
+        new Gma(this);
+        new Gmc(this);
+        new Gms(this);
+        new Gmsp(this);
 
-        System.out.println("Pluginet starter..");
     }
 
+
+    public String getString(String path, String value){
+        if (path == "config"){
+            return mainConfigYML.getString(value).replace("&", "§");
+        } else if (path == "gems"){
+            return gemConfigYML.getString(value).replace("&", "§");
+        } else if (path == "coins"){
+            return coinConfigYML.getString(value).replace("&", "§");
+        } else {
+            return "Forstod ikke pathen..";
+        }
+    }
 
     public static Main getInstance(){return instance;}
 
