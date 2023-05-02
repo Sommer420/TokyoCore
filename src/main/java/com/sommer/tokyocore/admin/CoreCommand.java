@@ -11,9 +11,9 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import java.lang.System;
 
-import static com.sommer.tokyocore.Main.mainConfig;
+import static com.sommer.tokyocore.Main.*;
 
-public class CoreCommand extends JavaPlugin implements CommandExecutor {
+public class CoreCommand implements CommandExecutor {
 
     public CoreCommand(Main plugin){
         plugin.getCommand("tokyocore").setExecutor(this);
@@ -27,7 +27,7 @@ public class CoreCommand extends JavaPlugin implements CommandExecutor {
                 String p = Main.getInstance().getString("config", "prefix");
                 if (player.hasPermission(Main.instance.getString("config", "adminperm"))) {
                     if (args.length == 0) {
-                        player.sendMessage("§aTokyoCore§f version §a" + getDescription().getVersion() + "§f, udviklet af §aSommer");
+                        player.sendMessage("§aTokyoCore§f version §a" + Main.instance.getDescription().getVersion() + "§f, udviklet af §aSommer");
                         player.sendMessage("§fTilgængelige kommandoer:");
                         player.sendMessage("§a/TokyoCore §f...");
                         player.sendMessage("§8» §freload");
@@ -36,7 +36,10 @@ public class CoreCommand extends JavaPlugin implements CommandExecutor {
                         try {
                             long tidBefore = System.currentTimeMillis();
                             mainConfig.reloadConfig();
-                            player.sendMessage(p + "§fDu reloadede configen! §7(" + (System.currentTimeMillis() - tidBefore) + "ms)");
+                            mainConfigYML = mainConfig.getConfig();
+                            msgConfig.reloadConfig();
+                            msgConfigYML = msgConfig.getConfig();
+                            player.sendMessage(p + " §fDu reloadede configen og alle beskederne! §7(" + (System.currentTimeMillis() - tidBefore) + "ms)");
                         } catch (Exception e) {
                             System.out.println(e);
                         }

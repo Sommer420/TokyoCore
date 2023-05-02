@@ -1,7 +1,9 @@
 package com.sommer.tokyocore;
 
+import com.sommer.tokyocore.Listeners.ChatListener;
 import com.sommer.tokyocore.Listeners.JoinListener;
 import com.sommer.tokyocore.admin.CoreCommand;
+import com.sommer.tokyocore.admin.fly.FlyCommand;
 import com.sommer.tokyocore.admin.straf.Kick;
 import com.sommer.tokyocore.coins.CoinCommand;
 import com.sommer.tokyocore.gamemode.*;
@@ -17,14 +19,14 @@ import org.bukkit.plugin.java.JavaPlugin;
 import java.io.File;
 
 public final class Main extends JavaPlugin implements Listener {
-    public static Config coinConfig, gemConfig, mainConfig;
-    public static FileConfiguration coinConfigYML, gemConfigYML, mainConfigYML;
+    public static Config coinConfig, gemConfig, mainConfig, msgConfig;
+    public static FileConfiguration coinConfigYML, gemConfigYML, mainConfigYML, msgConfigYML;
     public static Main instance;
     @Override
     public void onEnable() {
+        instance = this;
         UpdateChecker.fetchLatestRelease();
         //Opretter configs:
-        instance = this;
         //Config fil til coins:
         if (!(new File(getDataFolder(), "coins.yml")).exists())saveResource("coins.yml", false);
         coinConfig = new Config(this, null, "coins.yml");
@@ -37,13 +39,20 @@ public final class Main extends JavaPlugin implements Listener {
         if (!(new File(getDataFolder(), "config.yml")).exists())saveResource("config.yml", false);
         mainConfig = new Config(this, null, "config.yml");
         mainConfigYML = mainConfig.getConfig();
+        //Config fil til messages config:
+        if (!(new File(getDataFolder(), "messages.yml")).exists())saveResource("messages.yml", false);
+        msgConfig = new Config(this, null, "messages.yml");
+        msgConfigYML = msgConfig.getConfig();
         System.out.println("Pluginet starter..");
 
         getServer().getPluginManager().registerEvents(new JoinListener(), this);
+        getServer().getPluginManager().registerEvents(new ChatListener(), this);
 
         new GemCommand(this);
         new CoinCommand(this);
         new CoreCommand(this);
+
+        new FlyCommand(this);
 
         new Kick(this);
 

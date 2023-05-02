@@ -5,7 +5,9 @@ import org.bukkit.GameMode;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
-public class GameModeManager extends JavaPlugin {
+import java.util.HashMap;
+
+public class GameModeManager extends JavaPlugin{
     public static void setGameMode(final Player p, final String gm){
         if (gm.equalsIgnoreCase("1")||gm.equalsIgnoreCase("creative")||gm.equalsIgnoreCase( "kreativ")){
             p.setGameMode(GameMode.CREATIVE);

@@ -29,30 +29,33 @@ public class UpdateChecker {
     static Boolean isUpdateAvailable;
 
     public static void fetchLatestRelease() {
-        Bukkit.getScheduler().runTaskAsynchronously(Main.getInstance(), (Runnable) () -> {
-            catchBlock: try {
-                final HttpURLConnection connection = tryRequest(LATEST_RELEASE_URL);
+        Bukkit.getScheduler().runTaskAsynchronously(Main.getInstance(), new Runnable() {
+            @Override
+            public void run() {
+                catchBlock: try {
+                    final HttpURLConnection connection = tryRequest(LATEST_RELEASE_URL);
 
-                if (connection.getResponseCode() == HttpURLConnection.HTTP_NOT_FOUND) {
-                    break catchBlock;
-                } else if (connection.getResponseCode() == HttpURLConnection.HTTP_INTERNAL_ERROR
-                        || connection.getResponseCode() == HttpURLConnection.HTTP_FORBIDDEN) {
-                    break catchBlock;
-                }
+                    if (connection.getResponseCode() == HttpURLConnection.HTTP_NOT_FOUND) {
+                        break catchBlock;
+                    } else if (connection.getResponseCode() == HttpURLConnection.HTTP_INTERNAL_ERROR
+                            || connection.getResponseCode() == HttpURLConnection.HTTP_FORBIDDEN) {
+                        break catchBlock;
+                    }
 
-                try (BufferedReader reader = new BufferedReader(
-                        new InputStreamReader(connection.getInputStream(), StandardCharsets.UTF_8))) {
-                    newestVersion = new Gson().fromJson(reader, JsonArray.class).get(0).getAsJsonObject()
-                            .get("tag_name").getAsString();
+                    try (BufferedReader reader = new BufferedReader(
+                            new InputStreamReader(connection.getInputStream(), StandardCharsets.UTF_8))) {
+                        newestVersion = new Gson().fromJson(reader, JsonArray.class).get(0).getAsJsonObject()
+                                .get("tag_name").getAsString();
 
-                    checkUpdate(); // print to stdout
-                    return; // the request was successful
+                        checkUpdate(); // print to stdout
+                        return; // the request was successful
 
-                } catch (JsonSyntaxException | NumberFormatException e) {
+                    } catch (JsonSyntaxException | NumberFormatException e) {
+                        e.printStackTrace();
+                    }
+                } catch (IOException e) {
                     e.printStackTrace();
                 }
-            } catch (IOException e) {
-                e.printStackTrace();
             }
         });
         error = true;
@@ -85,7 +88,7 @@ public class UpdateChecker {
 
             return true;
         } else {
-            Logger.info("Running latest version of bande! (" + getPluginVersion() + ")");
+            Logger.info("Kører nyeste version af TokyoCore! (" + getPluginVersion() + ")");
         }
         isUpdateAvailable = false;
         return false;

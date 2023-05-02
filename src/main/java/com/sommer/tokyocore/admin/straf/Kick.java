@@ -1,6 +1,7 @@
 package com.sommer.tokyocore.admin.straf;
 
 import com.sommer.tokyocore.Main;
+import jdk.internal.joptsimple.internal.Strings;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -30,7 +31,7 @@ public class Kick implements CommandExecutor {
                     if (Bukkit.getOnlinePlayers().contains(Bukkit.getPlayer(args[0]))){
                         Player target = Bukkit.getPlayer(args[0]);
                         if (args.length >= 3){
-                            String reason = Arrays.asList(args).subList(2, args.length).toString();
+                            String reason = String.join(" ", Arrays.asList(args).subList(1, args.length));
                             StrafManager.kickPlayer(target, (Player) p, reason);
                         } else {
                             StrafManager.kickPlayer(target, (Player) p, args[1]);
