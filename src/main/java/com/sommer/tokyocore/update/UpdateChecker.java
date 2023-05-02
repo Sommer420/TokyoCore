@@ -7,6 +7,8 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 
+import com.sommer.tokyocore.Main;
+import com.sommer.tokyocore.utils.Logger;
 import org.bukkit.Bukkit;
 
 import com.google.gson.Gson;
@@ -16,7 +18,7 @@ import com.google.gson.JsonSyntaxException;
 import com.vdurmont.semver4j.Semver;
 
 public class UpdateChecker {
-    private static final String REPO = "Tandhjulet/BandePlugin";
+    private static final String REPO = "Sommer420/TokyoCore";
     private static final String LATEST_RELEASE_URL = "https://api.github.com/repos/" + REPO + "/releases";
 
     private UpdateChecker() {
@@ -27,7 +29,7 @@ public class UpdateChecker {
     static Boolean isUpdateAvailable;
 
     public static void fetchLatestRelease() {
-        Bukkit.getScheduler().runTaskAsynchronously(BandePlugin.getPlugin(), (Runnable) () -> {
+        Bukkit.getScheduler().runTaskAsynchronously(Main.getInstance(), (Runnable) () -> {
             catchBlock: try {
                 final HttpURLConnection connection = tryRequest(LATEST_RELEASE_URL);
 
@@ -94,7 +96,7 @@ public class UpdateChecker {
     }
 
     public static String getPluginVersion() {
-        return BandePlugin.getPlugin().getDescription().getVersion();
+        return Main.getInstance().getDescription().getVersion();
     }
 
     public static boolean isUpdateAvailable() {

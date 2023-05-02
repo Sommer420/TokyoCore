@@ -1,10 +1,12 @@
 package com.sommer.tokyocore;
 
+import com.sommer.tokyocore.Listeners.JoinListener;
 import com.sommer.tokyocore.admin.CoreCommand;
 import com.sommer.tokyocore.admin.straf.Kick;
 import com.sommer.tokyocore.coins.CoinCommand;
 import com.sommer.tokyocore.gamemode.*;
 import com.sommer.tokyocore.gems.GemCommand;
+import com.sommer.tokyocore.update.UpdateChecker;
 import com.sommer.tokyocore.utils.Config;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -20,6 +22,7 @@ public final class Main extends JavaPlugin implements Listener {
     public static Main instance;
     @Override
     public void onEnable() {
+        UpdateChecker.fetchLatestRelease();
         //Opretter configs:
         instance = this;
         //Config fil til coins:
@@ -36,6 +39,8 @@ public final class Main extends JavaPlugin implements Listener {
         mainConfigYML = mainConfig.getConfig();
         System.out.println("Pluginet starter..");
 
+        getServer().getPluginManager().registerEvents(new JoinListener(), this);
+
         new GemCommand(this);
         new CoinCommand(this);
         new CoreCommand(this);
@@ -48,6 +53,7 @@ public final class Main extends JavaPlugin implements Listener {
         new Gms(this);
         new Gmsp(this);
     }
+
 
 
     public String getString(String path, String value){
@@ -66,8 +72,6 @@ public final class Main extends JavaPlugin implements Listener {
 
     @Override
     public void onDisable() {System.out.println("Pluginet slået fra..");}
-
-
 
 
 
