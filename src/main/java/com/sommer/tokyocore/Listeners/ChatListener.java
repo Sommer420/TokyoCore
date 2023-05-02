@@ -15,7 +15,7 @@ public class ChatListener implements Listener {
         if (mainConfigYML.getBoolean("chatEnabled")){
             //Chat chat = Main.instance.getChat();
             //System.out.println("chatEnabled == true");
-            e.setFormat(e.getPlayer().getName() + " §8» §f" + e.getMessage().replace("&", "§").replace("%", ""));
+            e.setFormat(e.getPlayer().getName() + " §8» §f" + e.getMessage().replace("&", "§").replace("%", "procent"));
         } else {
             //System.out.println("chatEnabled !== true");
         }
