@@ -1,4 +1,4 @@
-package com.sommer.tokyocore.Listeners;
+package com.sommer.tokyocore.listeners;
 
 import com.sommer.tokyocore.Main;
 import com.sommer.tokyocore.update.UpdateChecker;

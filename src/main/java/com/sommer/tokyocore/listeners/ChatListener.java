@@ -1,10 +1,8 @@
-package com.sommer.tokyocore.Listeners;
+package com.sommer.tokyocore.listeners;
 
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
-import org.bukkit.event.player.PlayerChatEvent;
-import org.jetbrains.annotations.Async;
 
 import static com.sommer.tokyocore.Main.mainConfigYML;
 

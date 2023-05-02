@@ -1,7 +1,7 @@
 package com.sommer.tokyocore;
 
-import com.sommer.tokyocore.Listeners.ChatListener;
-import com.sommer.tokyocore.Listeners.JoinListener;
+import com.sommer.tokyocore.listeners.ChatListener;
+import com.sommer.tokyocore.listeners.JoinListener;
 import com.sommer.tokyocore.admin.CoreCommand;
 import com.sommer.tokyocore.admin.fly.FlyCommand;
 import com.sommer.tokyocore.admin.straf.Kick;
@@ -10,10 +10,8 @@ import com.sommer.tokyocore.gamemode.*;
 import com.sommer.tokyocore.gems.GemCommand;
 import com.sommer.tokyocore.update.UpdateChecker;
 import com.sommer.tokyocore.utils.Config;
-import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.event.Listener;
-import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
