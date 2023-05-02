@@ -12,7 +12,7 @@ import static com.sommer.tokyocore.Main.*;
 public class CoinCommand implements CommandExecutor {
 
     public CoinCommand(Main plugin){
-        plugin.getCommand("Coins").setExecutor(this);
+        plugin.getCommand("coins").setExecutor(this);
     }
 
     @Override

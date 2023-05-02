@@ -6,6 +6,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.lang.System;
@@ -13,10 +14,10 @@ import java.lang.System;
 import static com.sommer.tokyocore.Main.mainConfig;
 
 public class CoreCommand extends JavaPlugin implements CommandExecutor {
-    public CoreCommand(Main plugin){
-        plugin.getCommand("TokyoCore").setExecutor(this);
-    }
 
+    public CoreCommand(Main plugin){
+        plugin.getCommand("tokyocore").setExecutor(this);
+    }
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (command.getName().equalsIgnoreCase("tokyocore")) {
@@ -26,7 +27,7 @@ public class CoreCommand extends JavaPlugin implements CommandExecutor {
                 String p = Main.getInstance().getString("config", "prefix");
                 if (player.hasPermission(Main.instance.getString("config", "adminperm"))) {
                     if (args.length == 0) {
-                        player.sendMessage("§aTokyoCore§f version §a" + "x" + "§f, udviklet af §aSommer");
+                        player.sendMessage("§aTokyoCore§f version §a" + getDescription().getVersion() + "§f, udviklet af §aSommer");
                         player.sendMessage("§fTilgængelige kommandoer:");
                         player.sendMessage("§a/TokyoCore §f...");
                         player.sendMessage("§8» §freload");

@@ -6,7 +6,7 @@
 
     <groupId>com.sommer</groupId>
     <artifactId>TokyoCore</artifactId>
-    <version>0.1</version>
+    <version>0.2</version>
     <packaging>jar</packaging>
 
     <name>TokyoCore</name>
@@ -65,6 +65,11 @@
     </repositories>
 
     <dependencies>
+        <dependency>
+            <groupId>com.vdurmont</groupId>
+            <artifactId>semver4j</artifactId>
+            <version>3.1.0</version>
+        </dependency>
         <dependency>
             <groupId>dev.triumphteam</groupId>
             <artifactId>triumph-gui</artifactId>

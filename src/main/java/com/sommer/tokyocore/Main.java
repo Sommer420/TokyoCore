@@ -34,10 +34,8 @@ public final class Main extends JavaPlugin implements Listener {
         if (!(new File(getDataFolder(), "config.yml")).exists())saveResource("config.yml", false);
         mainConfig = new Config(this, null, "config.yml");
         mainConfigYML = mainConfig.getConfig();
-        //new GuiManager();
-        //Bukkit.getPluginManager().registerEvents(this, (Plugin) this);
-        getCommand("Gamemode").setExecutor(this);
         System.out.println("Pluginet starter..");
+
         new GemCommand(this);
         new CoinCommand(this);
         new CoreCommand(this);
@@ -49,7 +47,6 @@ public final class Main extends JavaPlugin implements Listener {
         new Gmc(this);
         new Gms(this);
         new Gmsp(this);
-
     }
 
 
